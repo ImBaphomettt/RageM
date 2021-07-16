@@ -2,6 +2,8 @@ local SELECTED_GROUP = nil;
 
 local INFINITE_AMMO_ENABLED = false;
 
+local THUNDER_SHOT = false;
+
 local MAIN_MENU = RageM.Get("RageM", "Main")
 RageM.New("Weapon", "Main", RageUI.CreateSubMenu(MAIN_MENU, "Weapon", "Weapon"))
 RageM.New("Weapon", "Selected", RageUI.CreateSubMenu(RageM.Get("Weapon", "Main"), "Weapon", "Weapon"))
@@ -20,6 +22,12 @@ function RageUI.PoolMenus:Weapon()
                 for i, v in pairs(WEAPONS) do
                     SetPedInfiniteAmmo(Player.PedId, IsChecked, v.Hash)
                 end
+            end
+        end)
+
+        Item:CheckBox("Thunder Shot", nil, THUNDER_SHOT, {}, function(onSelected, onActive, IsChecked)
+            if (onSelected) then
+                THUNDER_SHOT = IsChecked
             end
         end)
 
@@ -53,4 +61,11 @@ function RageUI.PoolMenus:Weapon()
 
 end
 
-
+function Thread.Registers:Weapon()
+    if (THUNDER_SHOT) then
+        local HaveHit, LAST_HIT = GetPedLastWeaponImpactCoord(Player.PedId)
+        if (HaveHit) then
+            Native.ForceLightningFlashAtCoords(LAST_HIT.x, LAST_HIT.y, LAST_HIT.z, -1.0)
+        end
+    end
+end
