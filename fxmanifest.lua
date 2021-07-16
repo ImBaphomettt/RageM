@@ -8,6 +8,7 @@ game 'rdr3'
 rdr3_warning 'I acknowledge that this is a prerelease build of RedM, and I am aware my resources *will* become incompatible once RedM ships.'
 
 client_scripts {
+    "src/Native.lua",
     "vendor/RageM.lua",
     "vendor/RageUI/src/RageUI.lua",
     "vendor/RageUI/src/Menu.lua",
@@ -19,6 +20,7 @@ client_scripts {
     "vendor/RageUI/src/windows/*.lua",
     --"vendor/RageUI/example.lua",
 
+    "src/enum/*.lua",
     "src/helpers/C*.lua",
     "src/C*.lua",
     "src/menus/Main.lua",
