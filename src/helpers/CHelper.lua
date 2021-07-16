@@ -6,10 +6,32 @@
 
 CHelper = {};
 
-function CHelper.DisplayLocationNotification(text, location, duration)
-    exports["baphomet"]:DisplayLocationNotification(text, location, duration)
+function CHelper.NoClip( IsChecked)
+    if (IsChecked) then
+        if (Global.CameraNoClip == nil) then
+            Global.CameraNoClip = CreateCamera(GetHashKey("DEFAULT_SCRIPTED_CAMERA"), true)
+        end
+        SetCamActive(Global.CameraNoClip, true)
+        SetCamCoord(Global.CameraNoClip, GetEntityCoords(Player.PedId))
+        RenderScriptCams(true, false, 0, true, true)
+        FreezeEntityPosition(Player.PedId, true)
+        SetEntityInvincible(Player.PedId, true)
+        SetEntityVisible(Player.PedId, false)
+        Player.IsInNoClip = true
+    end
+    if not (IsChecked) then
+        local CAM_COORDS = GetCamCoord(Global.CameraNoClip)
+        DestroyCam(Global.CameraNoClip)
+        RenderScriptCams(false, false, 0, false, false)
+        FreezeEntityPosition(Player.PedId, false)
+        SetEntityCoords(Player.PedId, CAM_COORDS.x, CAM_COORDS.y, CAM_COORDS.z)
+        SetEntityInvincible(Player.PedId, false)
+        SetEntityVisible(Player.PedId, true)
+        if (Global.CameraNoClip) then
+            Global.CameraNoClip = nil;
+        end
+        Player.IsInNoClip = false
+    end
 end
 
-function CHelper.DisplayLeftNotification(title, subTitle, iconDict, icon, duration)
-    exports["baphomet"]:DisplayLeftNotification(title, subTitle, iconDict, icon, duration)
-end
+

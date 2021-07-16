@@ -12,6 +12,9 @@ local PlayerId = PlayerId;
 Thread = {};
 Thread.Registers = {};
 
+Global = {};
+Global.CameraNoClip = nil;
+
 Player = {};
 Player.PlayerId = PlayerId();
 Player.PedId = PlayerPedId();
