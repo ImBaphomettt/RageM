@@ -46,11 +46,10 @@ function RageUI.PoolMenus:Weapon()
 
     RageM.Get("Weapon", "Selected"):IsVisible(function(Item)
         if (SELECTED_GROUP ~= nil) and (WEAPONS_GROUP[SELECTED_GROUP] ~= nil) then
-
             for i, v in pairs(WEAPONS_GROUP[SELECTED_GROUP]) do
                 Item:AddButton(v.Weapon, nil, {}, function(onSelected, onActive)
                     if (onSelected) then
-                        Native.GiveWeaponToPed(Player.PedId, v.Hash, 1, false, true, 1, false, 0.5, 1.0, "Weapon gived by RageM", 0)
+                        Native.GiveWeaponToPed(Player.PedId, v.Hash, 1, false, true, 1, false, 0.5, 1.0, 0x5C05C64D, 0)
                     end
                 end)
             end

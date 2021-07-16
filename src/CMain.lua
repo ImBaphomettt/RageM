@@ -17,6 +17,8 @@ Player.PlayerId = PlayerId();
 Player.PedId = PlayerPedId();
 Player.Position = GetEntityCoords(Player.PedId);
 Player.InteriorId = GetInteriorFromEntity(Player.PedId);
+Player.IsInNoClip = false;
+Player.NoClipSpeed = 10.0;
 
 Citizen.CreateThread(function()
     local INDEXER_TIMER = 0;
