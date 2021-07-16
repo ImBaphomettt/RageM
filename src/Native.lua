@@ -13,3 +13,11 @@ end
 function Native.ForceLightningFlashAtCoords(x,y,z, p3)
     Citizen.InvokeNative(0x67943537D179597C, x,y,z, p3)
 end
+
+function Native.SetWeatherType(weatherHash, p1, p2, overrideNetwork, transitionTime, p5)
+    Citizen.InvokeNative(0x59174F1AFE095B5A, weatherHash, true, false, true, transitionTime, false)
+end
+
+function Native.NetworkClockTimeOverride( hour,  minute,  second,  transitionTime,  pauseClock)
+    Citizen.InvokeNative(0x669E223E64B1903C, hour,  minute,  second,  transitionTime,  pauseClock)
+end

@@ -22,6 +22,7 @@ Player.Position = GetEntityCoords(Player.PedId);
 Player.InteriorId = GetInteriorFromEntity(Player.PedId);
 Player.IsInNoClip = false;
 Player.NoClipSpeed = 10.0;
+Player.IsInvincible = false;
 
 Citizen.CreateThread(function()
     local INDEXER_TIMER = 0;

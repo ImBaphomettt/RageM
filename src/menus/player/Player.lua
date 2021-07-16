@@ -9,6 +9,11 @@ function RageUI.PoolMenus:Player()
                 CHelper.NoClip(IsChecked)
             end
         end)
+        Item:CheckBox("Invincible", nil, Player.IsInvincible, {}, function(onSelected, onActive, IsChecked)
+            if (onSelected) then
+                Player.IsInvincible = IsChecked
+            end
+        end)
     end, function(Panel)
 
     end)
@@ -42,7 +47,6 @@ function Thread.Registers:Player()
                 Player.NoClipSpeed = Player.NoClipSpeed + 0.1
             end
         end
-
         local xMagnitude = GetDisabledControlNormal(0, 0xA987235F)
         local yMagnitude = GetDisabledControlNormal(0, 0xD2047988)
         local camRot = GetCamRot(Global.CameraNoClip)
@@ -57,5 +61,11 @@ function Thread.Registers:Player()
         end
         SetCamRot(Global.CameraNoClip, x, y, z)
     end
+
+    if (Player.IsInvincible) then
+        Citizen.InvokeNative(0xFEBEEBC9CBDF4B12, Player.PlayerId, true)
+    end
+
+
 end
 
