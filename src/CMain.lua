@@ -8,6 +8,7 @@ local PlayerPedId = PlayerPedId;
 local GetEntityCoords = GetEntityCoords;
 local GetInteriorFromEntity = GetInteriorFromEntity;
 local PlayerId = PlayerId;
+local GetEntityHeading = GetEntityHeading;
 
 Thread = {};
 Thread.Registers = {};
@@ -19,6 +20,7 @@ Player = {};
 Player.PlayerId = PlayerId();
 Player.PedId = PlayerPedId();
 Player.Position = GetEntityCoords(Player.PedId);
+Player.Heading = GetEntityHeading(Player.PedId);
 Player.InteriorId = GetInteriorFromEntity(Player.PedId);
 Player.IsInNoClip = false;
 Player.NoClipSpeed = 10.0;

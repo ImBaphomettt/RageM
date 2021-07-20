@@ -28,6 +28,7 @@ client_scripts {
     "src/menus/weapon/*.lua",
     "src/menus/mics/*.lua",
     "src/menus/player/*.lua",
+    "src/menus/ipl/*.lua",
    -- "tests/C*.lua"
 }
 

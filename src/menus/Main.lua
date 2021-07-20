@@ -4,6 +4,7 @@ local MENU = {
     { Name = "Player", RType = "Player", RName = "Main" },
     { Name = "World", RType = "World", RName = "Main" },
     { Name = "Weapon",  RType = "Weapon", RName = "Main" },
+    { Name = "Ipl",  RType = "Ipl", RName = "Main" },
     { Name = "Mics",  RType = "Mics", RName = "Main" },
 }
 

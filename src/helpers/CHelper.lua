@@ -6,7 +6,7 @@
 
 CHelper = {};
 
-function CHelper.NoClip( IsChecked)
+function CHelper.NoClip(IsChecked)
     if (IsChecked) then
         if (Global.CameraNoClip == nil) then
             Global.CameraNoClip = CreateCamera(GetHashKey("DEFAULT_SCRIPTED_CAMERA"), true)
@@ -31,6 +31,35 @@ function CHelper.NoClip( IsChecked)
             Global.CameraNoClip = nil;
         end
         Player.IsInNoClip = false
+    end
+end
+
+function CHelper.KeyboardInput(TextEntry, ExampleText, OnlyNumber)
+    AddTextEntry('FMMC_KEY_TIP1', TextEntry)
+    DisplayOnscreenKeyboard(1, "FMMC_KEY_TIP1", "", ExampleText, "", "", "", 500)
+    local blocking = true
+
+    while UpdateOnscreenKeyboard() ~= 1 and UpdateOnscreenKeyboard() ~= 2 do
+        Citizen.Wait(0)
+    end
+
+    if UpdateOnscreenKeyboard() ~= 2 then
+        local result = GetOnscreenKeyboardResult()
+        Citizen.Wait(500)
+        blocking = false
+        if (OnlyNumber) then
+            local number = tonumber(result)
+            if (number ~= nil) then
+                return number
+            end
+            return nil
+        else
+            return result
+        end
+    else
+        Citizen.Wait(500)
+        blocking = false
+        return nil
     end
 end
 
